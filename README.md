@@ -1,28 +1,33 @@
-# ServiceAdvisor MCP
+# StackSieve MCP
 
 > Give AI agents a superpower: instantly find the best third-party service for any job.
 
-**ServiceAdvisor MCP** is a structured, always-updated recommendation engine designed for AI coding tools like Claude Code, Cursor, and Windsurf. Describe your product in natural language — the AI returns the top service picks with reasons, pricing info, and quick-start commands.
+**StackSieve MCP** is a structured, always-updated recommendation engine designed for AI coding tools like Claude Code, Cursor, and Windsurf. Describe your product in natural language — the AI returns the top service picks with reasons, pricing info, and quick-start commands.
+
+Branding note:
+- Product name: **StackSieve**
+- MCP server id / CLI command: `service-advisor` (kept for compatibility)
 
 ---
 
 ## Quick Start (Multi-Client)
 
-As of **February 23, 2026**, `@stacksievehq/mcp-server` is **not published to npm** yet.
-Use the **local build** command below to avoid `Server "service-advisor" not found`.
+As of **February 23, 2026**, packages are available on npm:
+
+- `@stacksievehq/mcp-server@0.1.2`
+- `@stacksievehq/cli@0.1.1`
+
+Use **npm mode first** for fastest setup.
 
 ```bash
-# 1) Build local MCP server
-pnpm --filter @stacksievehq/mcp-server build
-
-# 2) Register for Claude Code (project scope)
-claude mcp add service-advisor --scope project -- node packages/mcp-server/dist/index.js
+# 1) Register for Claude Code (project scope)
+claude mcp add service-advisor --scope project -- npx -y @stacksievehq/mcp-server
 
 # Verify
 claude mcp list
 ```
 
-### JSON config (local repository mode)
+### JSON config (npm published mode)
 
 `.mcp.json` / `.cursor/mcp.json` / `~/.codeium/windsurf/mcp_config.json`:
 
@@ -30,8 +35,8 @@ claude mcp list
 {
   "mcpServers": {
     "service-advisor": {
-      "command": "node",
-      "args": ["packages/mcp-server/dist/index.js"]
+      "command": "npx",
+      "args": ["-y", "@stacksievehq/mcp-server"]
     }
   }
 }
@@ -41,11 +46,18 @@ claude mcp list
 
 ```toml
 [mcp_servers.service-advisor]
-command = "node"
-args = ["packages/mcp-server/dist/index.js"]
+command = "npx"
+args = ["-y", "@stacksievehq/mcp-server"]
 ```
 
-For full client-by-client setup (Claude Code / Cursor / Windsurf / Claude Desktop, project/user scope, JSON + TOML, troubleshooting), see [`docs/quickstart.md`](docs/quickstart.md).
+### Local fallback (repository development mode)
+
+```bash
+pnpm --filter @stacksievehq/mcp-server build
+claude mcp add service-advisor --scope project -- node /ABSOLUTE/PATH/stacksieve/packages/mcp-server/dist/index.js
+```
+
+For full client-by-client setup (Claude Code / Cursor / Windsurf / Claude Desktop, project/user scope, JSON + TOML, npm-first + local fallback, troubleshooting), see [`docs/quickstart.md`](docs/quickstart.md).
 
 ---
 
@@ -54,7 +66,7 @@ For full client-by-client setup (Claude Code / Cursor / Windsurf / Claude Deskto
 ```
 You: "I'm building a SaaS with email notifications, payments, and user auth"
 
-ServiceAdvisor:
+StackSieve:
   email   → Resend       (free tier: 100/day, 1-line SDK, official MCP server)
   payment → Stripe       (industry standard, subscription support)
   auth    → Clerk        (best Next.js DX, free plan covers MVP)
@@ -94,17 +106,20 @@ ServiceAdvisor:
 ## CLI Usage
 
 ```bash
-# Build once
-pnpm -r build
-
-# Ask for recommendations
-node packages/cli/dist/index.js "I need payments and email for a SaaS"
+# npm usage (recommended)
+npx -y @stacksievehq/cli@latest "I need payments and email for a SaaS"
 
 # Get service details
-node packages/cli/dist/index.js detail Resend
+npx -y @stacksievehq/cli@latest detail Resend
 
 # JSON output
-node packages/cli/dist/index.js "auth solution" --format json
+npx -y @stacksievehq/cli@latest "auth solution" --format json
+```
+
+```bash
+# local repository mode (development fallback)
+pnpm -r build
+node packages/cli/dist/index.js "I need payments and email for a SaaS"
 ```
 
 ---

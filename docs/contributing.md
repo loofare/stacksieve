@@ -1,6 +1,10 @@
 # 贡献指南（Contributing Guide）
 
-感谢你愿意为 ServiceAdvisor 数据库贡献数据！我们的核心资产是 `/data/` 目录下的 YAML 文件。
+感谢你愿意为 StackSieve 数据库贡献数据！我们的核心资产是 `/data/` 目录下的 YAML 文件。
+
+命名说明：
+- 对外产品名统一为 `StackSieve`
+- 代码与工具中的 `service-advisor` 为兼容标识
 
 ## 贡献类型
 

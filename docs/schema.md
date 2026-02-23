@@ -1,6 +1,6 @@
 # 数据字段说明（Schema Reference）
 
-ServiceAdvisor 数据库中每条服务记录包含 **14 个标准字段**，定义在 [`data/_schema.yaml`](../data/_schema.yaml)。
+StackSieve 数据库中每条服务记录包含 **14 个标准字段**，定义在 [`data/_schema.yaml`](../data/_schema.yaml)。
 
 ## 字段详解
 
