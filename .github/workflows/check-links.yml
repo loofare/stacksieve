@@ -1,0 +1,39 @@
+name: Check Documentation Links
+
+on:
+  schedule:
+    # 每月 1 日 UTC 00:00 运行
+    - cron: '0 0 1 * *'
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  check-links:
+    name: Check All official_docs URLs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check documentation links
+        run: |
+          # TODO: 实现 URL 有效性检测脚本
+          # 遍历所有 YAML 文件中的 official_docs 字段
+          # 对每个 URL 发送 HEAD 请求，记录失败的链接
+          # 输出报告，失败时创建 GitHub Issue
+          echo "Link check workflow — to be implemented"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,10 @@
+# logging.yaml — 日志服务场景
+# category: logging
+# 推荐填充顺序：Axiom → Logtail (Better Stack) → Datadog → Sentry → Logflare
+# 数据来源参考：https://github.com/agamm/awesome-developer-first
+
+services: []
+
+# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
+# Top Pick:  Axiom (AI 友好，免费额度慷慨)
+# 替代方案:  Logtail, Datadog, Sentry, Logflare

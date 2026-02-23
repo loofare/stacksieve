@@ -1,0 +1,11 @@
+# auth.yaml — 用户认证服务场景
+# category: auth
+# 推荐填充顺序：Clerk → Auth.js (NextAuth) → Supabase Auth → WorkOS → Lucia
+# 数据来源参考：https://github.com/agamm/awesome-developer-first
+# 验证 MCP：https://github.com/modelcontextprotocol/servers
+
+services: []
+
+# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
+# Top Pick:  Clerk
+# 替代方案:  Auth.js, Supabase Auth, WorkOS, Lucia

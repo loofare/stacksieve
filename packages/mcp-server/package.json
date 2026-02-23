@@ -1,0 +1,33 @@
+{
+    "name": "@stacksieve/mcp-server",
+    "version": "0.1.0",
+    "description": "ServiceAdvisor MCP Server — AI-powered third-party service recommendations",
+    "private": false,
+    "type": "module",
+    "main": "dist/index.js",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
+        "start": "node dist/index.js",
+        "lint": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.0.0",
+        "js-yaml": "^4.1.0",
+        "zod": "^3.22.0"
+    },
+    "devDependencies": {
+        "@types/js-yaml": "^4.0.9",
+        "@types/node": "^20.0.0",
+        "typescript": "^5.4.0"
+    },
+    "engines": {
+        "node": ">=20.0.0"
+    },
+    "bin": {
+        "service-advisor-mcp": "dist/index.js"
+    }
+}

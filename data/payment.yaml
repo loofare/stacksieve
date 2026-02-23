@@ -1,0 +1,11 @@
+# payment.yaml — 支付服务场景
+# category: payment
+# 推荐填充顺序：Stripe → LemonSqueezy → Paddle → Braintree
+# 数据来源参考：https://github.com/agamm/awesome-developer-first
+# 验证定价：需访问各服务官方定价页确认
+
+services: []
+
+# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
+# Top Pick:  Stripe
+# 替代方案:  LemonSqueezy, Paddle, Braintree

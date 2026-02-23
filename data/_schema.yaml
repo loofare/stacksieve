@@ -1,0 +1,39 @@
+# _schema.yaml — ServiceAdvisor MCP 数据格式规范
+# 每条服务记录必须包含以下 12 个字段
+# 这是整个产品的数据契约，所有 YAML 文件中的记录必须符合此规范
+
+# 字段说明：
+# name:             string    # 服务名称，必填，唯一标识符
+# category:         string    # 主场景分类，必填（见下方分类枚举）
+# tags:             list      # 补充标签，如 [free-tier, open-source, self-hostable]
+# pricing_tier:     enum      # 定价档位：free / freemium / paid / enterprise
+# free_tier:        string    # 免费额度描述，如 "100 emails/day"；无则填 null
+# ai_friendliness:  int(1-5)  # AI 友好度：文档质量 + SDK 完整度 + MCP 支持
+# dx_score:         int(1-5)  # 开发者体验评分（接入难度、文档、社区支持）
+# official_docs:    url       # 官方文档 URL，必填，需人工核实可访问
+# mcp_available:    bool      # 是否有官方或社区 MCP Server
+# mcp_url:          url       # MCP Server 地址，无则 null
+# quick_install:    string    # 安装命令，如 "npm install resend"
+# best_for:         list      # 推荐使用场景标签
+# not_for:          list      # 明确不适合的场景
+# last_verified:    date      # 最后人工验证日期，格式 YYYY-MM
+
+# 场景分类枚举（category 字段的合法值）：
+# email | payment | auth | database | ai-llm | file-storage
+# search | analytics | logging | queue | cdn | notification
+
+# 示例记录：
+# - name: "Resend"
+#   category: "email"
+#   tags: ["transactional", "developer-friendly", "free-tier"]
+#   pricing_tier: "freemium"
+#   free_tier: "100 emails/day"
+#   ai_friendliness: 5
+#   dx_score: 5
+#   official_docs: "https://resend.com/docs"
+#   mcp_available: true
+#   mcp_url: "https://github.com/resendlabs/resend-mcp"
+#   quick_install: "npm install resend"
+#   best_for: ["indie hackers", "AI apps", "SaaS starter"]
+#   not_for: ["high volume > 50k/day without paid plan"]
+#   last_verified: "2025-02"

@@ -1,0 +1,10 @@
+# notification.yaml — 推送通知服务场景
+# category: notification
+# 推荐填充顺序：Novu → Knock → Courier → OneSignal → Firebase Cloud Messaging
+# 数据来源参考：https://github.com/agamm/awesome-developer-first
+
+services: []
+
+# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
+# Top Pick:  Novu (开源，统一多渠道通知)
+# 替代方案:  Knock, Courier, OneSignal, Firebase Cloud Messaging

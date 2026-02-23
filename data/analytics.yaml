@@ -1,0 +1,10 @@
+# analytics.yaml — 用户行为分析服务场景
+# category: analytics
+# 推荐填充顺序：PostHog → Mixpanel → Plausible → Amplitude → Heap
+# 数据来源参考：https://github.com/agamm/awesome-developer-first
+
+services: []
+
+# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
+# Top Pick:  PostHog (开源友好，自托管可选)
+# 替代方案:  Mixpanel, Plausible, Amplitude, Heap

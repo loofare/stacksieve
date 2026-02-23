@@ -1,0 +1,34 @@
+{
+    "name": "@stacksieve/cli",
+    "version": "0.1.0",
+    "description": "ServiceAdvisor CLI — query third-party service recommendations from your terminal",
+    "private": false,
+    "type": "module",
+    "main": "dist/index.js",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
+        "start": "node dist/index.js",
+        "lint": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@stacksieve/mcp-server": "workspace:*",
+        "chalk": "^5.3.0",
+        "cli-table3": "^0.6.3",
+        "commander": "^12.0.0"
+    },
+    "devDependencies": {
+        "@types/cli-table3": "^0.6.4",
+        "@types/node": "^20.0.0",
+        "typescript": "^5.4.0"
+    },
+    "engines": {
+        "node": ">=20.0.0"
+    },
+    "bin": {
+        "service-advisor": "dist/index.js"
+    }
+}

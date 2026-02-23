@@ -1,0 +1,10 @@
+# file-storage.yaml — 文件存储服务场景
+# category: file-storage
+# 推荐填充顺序：Cloudflare R2 → AWS S3 → Backblaze B2 → Uploadthing → Bunny.net
+# 数据来源参考：https://github.com/ripienaar/free-for-dev
+
+services: []
+
+# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
+# Top Pick:  Cloudflare R2
+# 替代方案:  AWS S3, Backblaze B2, Uploadthing, Bunny Storage

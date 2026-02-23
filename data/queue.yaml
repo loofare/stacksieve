@@ -1,0 +1,11 @@
+# queue.yaml — 消息队列/任务调度服务场景
+# category: queue
+# 推荐填充顺序：Upstash QStash → Inngest → BullMQ → Trigger.dev → Temporal
+# 数据来源参考：https://github.com/agamm/awesome-developer-first
+
+services: []
+
+# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
+# Top Pick:  Upstash QStash (serverless 友好)
+#            Inngest (开发者体验最好的后台任务)
+# 替代方案:  BullMQ (Redis-based), Trigger.dev, Temporal
