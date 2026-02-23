@@ -1,11 +1,77 @@
 # database.yaml — 数据库服务场景
-# category: database
-# 推荐填充顺序：Supabase → PlanetScale → Neon → Turso → Railway
-# 数据来源参考：https://github.com/ripienaar/free-for-dev
-# 验证 MCP：https://github.com/modelcontextprotocol/servers
 
-services: []
+services:
+  - name: "Supabase"
+    category: "database"
+    tags: ["postgres", "managed", "realtime"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 5
+    dx_score: 5
+    official_docs: "https://supabase.com/docs/guides/database/overview"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @supabase/supabase-js"
+    best_for: ["SaaS MVP", "fullstack TypeScript"]
+    not_for: ["strict on-prem deployments"]
+    last_verified: "2026-02"
 
-# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
-# Top Pick:  Supabase
-# 替代方案:  PlanetScale, Neon, Turso, Railway Postgres
+  - name: "Neon"
+    category: "database"
+    tags: ["serverless-postgres", "branching", "autoscaling"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://neon.tech/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @neondatabase/serverless"
+    best_for: ["serverless apps", "preview environments"]
+    not_for: ["single-tenant mandatory infra by default"]
+    last_verified: "2026-02"
+
+  - name: "PlanetScale"
+    category: "database"
+    tags: ["mysql", "branching", "serverless"]
+    pricing_tier: "freemium"
+    free_tier: "Starter plan available"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://planetscale.com/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @planetscale/database"
+    best_for: ["MySQL workloads", "safe schema migration workflows"]
+    not_for: ["teams requiring self-managed MySQL ops"]
+    last_verified: "2026-02"
+
+  - name: "Turso"
+    category: "database"
+    tags: ["sqlite", "edge", "replication"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://docs.turso.tech/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @libsql/client"
+    best_for: ["edge-first applications", "SQLite-compatible workflows"]
+    not_for: ["legacy heavy relational workloads"]
+    last_verified: "2026-02"
+
+  - name: "Railway Postgres"
+    category: "database"
+    tags: ["postgres", "managed", "platform-integrated"]
+    pricing_tier: "paid"
+    free_tier: "Trial credits available"
+    ai_friendliness: 3
+    dx_score: 4
+    official_docs: "https://docs.railway.com/guides/postgresql"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "Use Railway managed Postgres service"
+    best_for: ["small teams already on Railway"]
+    not_for: ["teams needing provider-agnostic database ops"]
+    last_verified: "2026-02"

@@ -1,11 +1,77 @@
 # auth.yaml — 用户认证服务场景
-# category: auth
-# 推荐填充顺序：Clerk → Auth.js (NextAuth) → Supabase Auth → WorkOS → Lucia
-# 数据来源参考：https://github.com/agamm/awesome-developer-first
-# 验证 MCP：https://github.com/modelcontextprotocol/servers
 
-services: []
+services:
+  - name: "Clerk"
+    category: "auth"
+    tags: ["hosted-auth", "nextjs", "b2c"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 5
+    dx_score: 5
+    official_docs: "https://clerk.com/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @clerk/nextjs"
+    best_for: ["Next.js apps", "rapid auth integration"]
+    not_for: ["strict self-hosted requirements"]
+    last_verified: "2026-02"
 
-# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
-# Top Pick:  Clerk
-# 替代方案:  Auth.js, Supabase Auth, WorkOS, Lucia
+  - name: "Auth.js"
+    category: "auth"
+    tags: ["open-source", "nextjs", "self-hostable"]
+    pricing_tier: "free"
+    free_tier: "Open-source"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://authjs.dev"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install next-auth"
+    best_for: ["custom auth control", "Next.js projects"]
+    not_for: ["teams wanting fully managed auth ops"]
+    last_verified: "2026-02"
+
+  - name: "Supabase Auth"
+    category: "auth"
+    tags: ["hosted-auth", "postgres", "realtime"]
+    pricing_tier: "freemium"
+    free_tier: "Included in Supabase free plan"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://supabase.com/docs/guides/auth"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @supabase/supabase-js"
+    best_for: ["Supabase-first stacks", "MVP launch"]
+    not_for: ["complex enterprise IAM"]
+    last_verified: "2026-02"
+
+  - name: "WorkOS"
+    category: "auth"
+    tags: ["sso", "enterprise", "directory-sync"]
+    pricing_tier: "paid"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://workos.com/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @workos-inc/node"
+    best_for: ["B2B SaaS SSO", "enterprise auth requirements"]
+    not_for: ["consumer-only apps without SSO needs"]
+    last_verified: "2026-02"
+
+  - name: "Lucia"
+    category: "auth"
+    tags: ["open-source", "lightweight", "customizable"]
+    pricing_tier: "free"
+    free_tier: "Open-source"
+    ai_friendliness: 3
+    dx_score: 4
+    official_docs: "https://lucia-auth.com/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install lucia"
+    best_for: ["custom auth architecture", "lightweight stacks"]
+    not_for: ["teams wanting hosted auth dashboards"]
+    last_verified: "2026-02"

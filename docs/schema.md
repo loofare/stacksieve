@@ -1,6 +1,6 @@
 # 数据字段说明（Schema Reference）
 
-ServiceAdvisor 数据库中每条服务记录包含 **12 个标准字段**，定义在 [`data/_schema.yaml`](../data/_schema.yaml)。
+ServiceAdvisor 数据库中每条服务记录包含 **14 个标准字段**，定义在 [`data/_schema.yaml`](../data/_schema.yaml)。
 
 ## 字段详解
 
@@ -50,11 +50,11 @@ ServiceAdvisor 数据库中每条服务记录包含 **12 个标准字段**，定
   dx_score: 5
   official_docs: "https://resend.com/docs"
   mcp_available: true
-  mcp_url: "https://github.com/resendlabs/resend-mcp"
+  mcp_url: "https://github.com/resend/mcp-send-email"
   quick_install: "npm install resend"
   best_for: ["indie hackers", "AI apps", "SaaS MVP"]
   not_for: ["high volume > 50k/day without paid plan"]
-  last_verified: "2025-02"
+  last_verified: "2026-02"
 ```
 
 ## 评分标准

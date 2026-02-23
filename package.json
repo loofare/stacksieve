@@ -12,10 +12,13 @@
         "dev": "pnpm -r dev",
         "lint": "pnpm -r lint",
         "test": "pnpm -r test",
-        "validate-data": "node scripts/validate-data.js"
+        "validate-data": "node scripts/validate-data.js",
+        "check-links": "node scripts/check-links.js"
     },
     "devDependencies": {
+        "js-yaml": "^4.1.0",
         "typescript": "^5.4.0",
+        "zod": "^3.25.76",
         "@types/node": "^20.0.0"
     },
     "packageManager": "pnpm@9.0.0"

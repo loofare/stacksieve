@@ -1,11 +1,77 @@
 # ai-llm.yaml — AI 大语言模型服务场景
-# category: ai-llm
-# 推荐填充顺序：Anthropic → OpenAI → Google Gemini → Groq → Mistral
-# 数据来源参考：https://github.com/agamm/awesome-developer-first
-# 验证 MCP：https://github.com/modelcontextprotocol/servers
 
-services: []
+services:
+  - name: "Anthropic Claude API"
+    category: "ai-llm"
+    tags: ["reasoning", "tool-use", "enterprise-safety"]
+    pricing_tier: "paid"
+    free_tier: null
+    ai_friendliness: 5
+    dx_score: 4
+    official_docs: "https://docs.anthropic.com"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @anthropic-ai/sdk"
+    best_for: ["reasoning-heavy workflows", "agent systems"]
+    not_for: ["projects that need always-free quota"]
+    last_verified: "2026-02"
 
-# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
-# Top Pick:  Anthropic Claude API
-# 替代方案:  OpenAI, Google Gemini, Groq, Mistral
+  - name: "OpenAI API"
+    category: "ai-llm"
+    tags: ["general-purpose", "multimodal", "ecosystem"]
+    pricing_tier: "paid"
+    free_tier: null
+    ai_friendliness: 5
+    dx_score: 5
+    official_docs: "https://github.com/openai/openai-node"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install openai"
+    best_for: ["broad model coverage", "production API ecosystem"]
+    not_for: ["hard real-time ultra-low-latency constraints"]
+    last_verified: "2026-02"
+
+  - name: "Google Gemini API"
+    category: "ai-llm"
+    tags: ["multimodal", "google-cloud", "sdk"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://ai.google.dev/gemini-api/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @google/genai"
+    best_for: ["Google ecosystem", "multimodal use cases"]
+    not_for: ["teams avoiding vendor-specific platforms"]
+    last_verified: "2026-02"
+
+  - name: "Groq API"
+    category: "ai-llm"
+    tags: ["low-latency", "inference", "open-models"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://github.com/groq/groq-typescript"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install groq-sdk"
+    best_for: ["latency-sensitive inference", "open model serving"]
+    not_for: ["teams needing one vendor for all frontier models"]
+    last_verified: "2026-02"
+
+  - name: "Mistral API"
+    category: "ai-llm"
+    tags: ["open-models", "inference", "europe"]
+    pricing_tier: "paid"
+    free_tier: "Trial credits may be available"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://docs.mistral.ai/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @mistralai/mistralai"
+    best_for: ["open-model leaning stacks", "EU data preference scenarios"]
+    not_for: ["teams requiring extensive managed ecosystem add-ons"]
+    last_verified: "2026-02"

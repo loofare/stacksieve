@@ -1,10 +1,77 @@
 # analytics.yaml — 用户行为分析服务场景
-# category: analytics
-# 推荐填充顺序：PostHog → Mixpanel → Plausible → Amplitude → Heap
-# 数据来源参考：https://github.com/agamm/awesome-developer-first
 
-services: []
+services:
+  - name: "PostHog"
+    category: "analytics"
+    tags: ["product-analytics", "feature-flags", "open-core"]
+    pricing_tier: "free"
+    free_tier: "Generous free tier available"
+    ai_friendliness: 4
+    dx_score: 5
+    official_docs: "https://posthog.com/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install posthog-node"
+    best_for: ["startup analytics", "self-host optional workflows"]
+    not_for: ["teams wanting only no-code setup"]
+    last_verified: "2026-02"
 
-# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
-# Top Pick:  PostHog (开源友好，自托管可选)
-# 替代方案:  Mixpanel, Plausible, Amplitude, Heap
+  - name: "Mixpanel"
+    category: "analytics"
+    tags: ["product-analytics", "funnels", "retention"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://docs.mixpanel.com/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install mixpanel"
+    best_for: ["product funnel analytics", "growth teams"]
+    not_for: ["teams requiring self-hosted default"]
+    last_verified: "2026-02"
+
+  - name: "Plausible Analytics"
+    category: "analytics"
+    tags: ["privacy-first", "web-analytics", "lightweight"]
+    pricing_tier: "paid"
+    free_tier: "Trial available"
+    ai_friendliness: 3
+    dx_score: 4
+    official_docs: "https://plausible.io/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "Use Plausible script snippet"
+    best_for: ["privacy-first web analytics", "simple page metrics"]
+    not_for: ["deep event-level product analytics"]
+    last_verified: "2026-02"
+
+  - name: "Amplitude"
+    category: "analytics"
+    tags: ["enterprise", "product-analytics", "experimentation"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 3
+    dx_score: 4
+    official_docs: "https://www.docs.developers.amplitude.com/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @amplitude/analytics-node"
+    best_for: ["scaled product organizations", "advanced analytics workflows"]
+    not_for: ["small teams needing minimal setup"]
+    last_verified: "2026-02"
+
+  - name: "Heap"
+    category: "analytics"
+    tags: ["autocapture", "product-analytics", "enterprise"]
+    pricing_tier: "paid"
+    free_tier: "Free tier may be available"
+    ai_friendliness: 3
+    dx_score: 3
+    official_docs: "https://developers.heap.io/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "Use Heap tracking snippet"
+    best_for: ["auto-capture centric analytics"]
+    not_for: ["teams wanting full event schema control from day one"]
+    last_verified: "2026-02"

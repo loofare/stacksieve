@@ -1,0 +1,32 @@
+# ServiceAdvisor 示例（email + payment）
+
+services:
+  - name: "Resend"
+    category: "email"
+    tags: ["transactional", "developer-friendly", "free-tier"]
+    pricing_tier: "freemium"
+    free_tier: "100 emails/day"
+    ai_friendliness: 5
+    dx_score: 5
+    official_docs: "https://resend.com/docs"
+    mcp_available: true
+    mcp_url: "https://github.com/resend/mcp-send-email"
+    quick_install: "npm install resend"
+    best_for: ["SaaS MVP", "Next.js apps", "developer-focused products"]
+    not_for: ["high-volume bulk campaigns"]
+    last_verified: "2026-02"
+
+  - name: "Stripe"
+    category: "payment"
+    tags: ["subscriptions", "global", "developer-friendly"]
+    pricing_tier: "paid"
+    free_tier: null
+    ai_friendliness: 5
+    dx_score: 5
+    official_docs: "https://docs.stripe.com"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install stripe"
+    best_for: ["SaaS subscriptions", "global payments", "marketplace flows"]
+    not_for: ["regions where Stripe is unavailable"]
+    last_verified: "2026-02"

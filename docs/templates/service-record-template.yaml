@@ -1,0 +1,18 @@
+# ServiceAdvisor 服务记录模板（复制后按需替换）
+# 文件名建议：data/<category>.yaml
+
+services:
+  - name: "<Service Name>"
+    category: "<email|payment|auth|database|ai-llm|file-storage|search|analytics|logging|queue|cdn|notification>"
+    tags: ["<tag-1>", "<tag-2>"]
+    pricing_tier: "<free|freemium|paid|enterprise>"
+    free_tier: "<free tier description or null>"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://example.com/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install <package-name>"
+    best_for: ["<scenario-1>", "<scenario-2>"]
+    not_for: ["<anti-scenario>"]
+    last_verified: "2026-02"

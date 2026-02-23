@@ -1,5 +1,5 @@
 // types.ts — ServiceAdvisor MCP TypeScript 类型定义
-// 对应 data/_schema.yaml 中的 12 字段数据契约
+// 对应 data/_schema.yaml 中的 14 字段数据契约
 
 export type PricingTier = 'free' | 'freemium' | 'paid' | 'enterprise';
 
@@ -19,7 +19,7 @@ export type Category =
 
 /**
  * 单条服务记录，对应 YAML 中的每个服务条目
- * 共 12 个字段，全部必填（null 表示无效值）
+ * 共 14 个字段，全部必填（null 表示无值）
  */
 export interface ServiceRecord {
     /** 服务名称，唯一标识符 */
@@ -33,9 +33,9 @@ export interface ServiceRecord {
     /** 免费额度描述，无则为 null */
     free_tier: string | null;
     /** AI 友好度评分：1-5（文档质量 + SDK 完整度 + MCP 支持） */
-    ai_friendliness: 1 | 2 | 3 | 4 | 5;
+    ai_friendliness: number;
     /** 开发者体验评分：1-5（接入难度、文档、社区支持） */
-    dx_score: 1 | 2 | 3 | 4 | 5;
+    dx_score: number;
     /** 官方文档 URL */
     official_docs: string;
     /** 是否有官方或社区 MCP Server */

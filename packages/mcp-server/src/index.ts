@@ -8,7 +8,7 @@ import { recommend, getDetail, listCategories } from './recommender.js';
 
 const server = new McpServer({
     name: 'service-advisor',
-    version: '0.1.0',
+    version: '0.1.1',
 });
 
 // ============================================================
@@ -41,7 +41,7 @@ server.tool(
 // ============================================================
 // Tool 2: get_service_detail
 // 输入：服务名称（如 "Resend"、"Stripe"）
-// 输出：该服务的完整 12 字段记录
+// 输出：该服务的完整 14 字段记录
 // ============================================================
 server.tool(
     'get_service_detail',

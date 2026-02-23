@@ -1,10 +1,77 @@
 # logging.yaml — 日志服务场景
-# category: logging
-# 推荐填充顺序：Axiom → Logtail (Better Stack) → Datadog → Sentry → Logflare
-# 数据来源参考：https://github.com/agamm/awesome-developer-first
 
-services: []
+services:
+  - name: "Axiom"
+    category: "logging"
+    tags: ["observability", "structured-logs", "query-performance"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://axiom.co/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @axiomhq/js"
+    best_for: ["developer-first observability", "log analytics"]
+    not_for: ["legacy SIEM-only stacks"]
+    last_verified: "2026-02"
 
-# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
-# Top Pick:  Axiom (AI 友好，免费额度慷慨)
-# 替代方案:  Logtail, Datadog, Sentry, Logflare
+  - name: "Better Stack Logtail"
+    category: "logging"
+    tags: ["logs", "hosted", "ingestion"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://betterstack.com/docs/logs/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @logtail/node"
+    best_for: ["hosted log aggregation", "fast setup for teams"]
+    not_for: ["highly customized observability pipelines"]
+    last_verified: "2026-02"
+
+  - name: "Datadog"
+    category: "logging"
+    tags: ["enterprise", "apm", "logs"]
+    pricing_tier: "enterprise"
+    free_tier: "Trial available"
+    ai_friendliness: 3
+    dx_score: 3
+    official_docs: "https://docs.datadoghq.com/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "Use Datadog Agent or Datadog SDK"
+    best_for: ["large enterprise observability"]
+    not_for: ["small teams with tight budget"]
+    last_verified: "2026-02"
+
+  - name: "Sentry"
+    category: "logging"
+    tags: ["error-tracking", "performance", "alerts"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 5
+    official_docs: "https://docs.sentry.io/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @sentry/node"
+    best_for: ["application error monitoring", "release health"]
+    not_for: ["teams needing only raw log storage"]
+    last_verified: "2026-02"
+
+  - name: "Logflare"
+    category: "logging"
+    tags: ["log-ingestion", "search", "dashboard"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 3
+    dx_score: 3
+    official_docs: "https://docs.logflare.app/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "Use Logflare HTTP source endpoint"
+    best_for: ["lightweight centralized logs"]
+    not_for: ["complex enterprise observability requirements"]
+    last_verified: "2026-02"

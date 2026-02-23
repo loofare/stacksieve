@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@stacksievehq/mcp-server/recommender": [
+        "../mcp-server/src/recommender.ts"
+      ],
+      "@stacksievehq/mcp-server/types": [
+        "../mcp-server/src/types.ts"
+      ]
+    },
+    "rootDir": "..",
+    "noEmit": true
+  },
+  "include": [
+    "src/**/*",
+    "../mcp-server/src/**/*"
+  ]
+}

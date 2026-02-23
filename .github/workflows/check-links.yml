@@ -29,11 +29,6 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Check documentation links
-        run: |
-          # TODO: 实现 URL 有效性检测脚本
-          # 遍历所有 YAML 文件中的 official_docs 字段
-          # 对每个 URL 发送 HEAD 请求，记录失败的链接
-          # 输出报告，失败时创建 GitHub Issue
-          echo "Link check workflow — to be implemented"
+        run: pnpm check-links
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

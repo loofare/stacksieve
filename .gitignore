@@ -11,6 +11,9 @@ dist/
 build/
 *.js.map
 *.d.ts
+*.d.ts.map
+packages/*/src/*.js
+packages/mcp-server/data/
 
 # Environment
 .env

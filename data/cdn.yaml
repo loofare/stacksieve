@@ -1,10 +1,77 @@
 # cdn.yaml — CDN 内容分发服务场景
-# category: cdn
-# 推荐填充顺序：Cloudflare → Fastly → BunnyCDN → AWS CloudFront → Vercel Edge
-# 数据来源参考：https://github.com/ripienaar/free-for-dev
 
-services: []
+services:
+  - name: "Cloudflare CDN"
+    category: "cdn"
+    tags: ["edge-network", "cache", "global"]
+    pricing_tier: "free"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 5
+    official_docs: "https://developers.cloudflare.com/cache/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "Use Cloudflare dashboard or API"
+    best_for: ["global static delivery", "cost-efficient edge caching"]
+    not_for: ["single-vendor private backbone controls"]
+    last_verified: "2026-02"
 
-# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
-# Top Pick:  Cloudflare (免费计划覆盖大多数独立开发者需求)
-# 替代方案:  Fastly, BunnyCDN, AWS CloudFront, Vercel Edge Network
+  - name: "Fastly"
+    category: "cdn"
+    tags: ["edge", "compute", "enterprise"]
+    pricing_tier: "paid"
+    free_tier: "Trial available"
+    ai_friendliness: 3
+    dx_score: 3
+    official_docs: "https://www.fastly.com/documentation/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "Use Fastly API or Terraform provider"
+    best_for: ["advanced edge caching", "fine-grained CDN controls"]
+    not_for: ["teams needing fastest low-ops onboarding"]
+    last_verified: "2026-02"
+
+  - name: "Bunny CDN"
+    category: "cdn"
+    tags: ["cost-effective", "global", "performance"]
+    pricing_tier: "paid"
+    free_tier: "Trial available"
+    ai_friendliness: 3
+    dx_score: 4
+    official_docs: "https://docs.bunny.net/docs/cdn-introduction"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "Use Bunny dashboard or API"
+    best_for: ["cost-sensitive global delivery"]
+    not_for: ["teams requiring advanced enterprise governance"]
+    last_verified: "2026-02"
+
+  - name: "AWS CloudFront"
+    category: "cdn"
+    tags: ["aws", "cdn", "global"]
+    pricing_tier: "paid"
+    free_tier: "AWS free tier available"
+    ai_friendliness: 3
+    dx_score: 3
+    official_docs: "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "Use AWS console or AWS SDK"
+    best_for: ["AWS-native architectures", "integrated cloud networking"]
+    not_for: ["teams avoiding AWS complexity"]
+    last_verified: "2026-02"
+
+  - name: "Vercel Edge Network"
+    category: "cdn"
+    tags: ["edge", "frontend", "deployment-integrated"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://vercel.com/docs/edge-network/overview"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "Deploy with Vercel platform"
+    best_for: ["Vercel-hosted frontend delivery"]
+    not_for: ["teams requiring provider-neutral CDN routing"]
+    last_verified: "2026-02"

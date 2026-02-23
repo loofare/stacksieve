@@ -1,11 +1,77 @@
 # queue.yaml — 消息队列/任务调度服务场景
-# category: queue
-# 推荐填充顺序：Upstash QStash → Inngest → BullMQ → Trigger.dev → Temporal
-# 数据来源参考：https://github.com/agamm/awesome-developer-first
 
-services: []
+services:
+  - name: "Inngest"
+    category: "queue"
+    tags: ["background-jobs", "workflow", "event-driven"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 5
+    official_docs: "https://www.inngest.com/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install inngest"
+    best_for: ["event-driven orchestration", "durable job execution"]
+    not_for: ["teams requiring raw queue primitives only"]
+    last_verified: "2026-02"
 
-# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
-# Top Pick:  Upstash QStash (serverless 友好)
-#            Inngest (开发者体验最好的后台任务)
-# 替代方案:  BullMQ (Redis-based), Trigger.dev, Temporal
+  - name: "Upstash QStash"
+    category: "queue"
+    tags: ["serverless", "http-queue", "cron"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://upstash.com/docs/qstash/overall/getstarted"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @upstash/qstash"
+    best_for: ["serverless background jobs", "HTTP-native queues"]
+    not_for: ["teams requiring on-prem queue clusters"]
+    last_verified: "2026-02"
+
+  - name: "BullMQ"
+    category: "queue"
+    tags: ["redis", "jobs", "worker"]
+    pricing_tier: "free"
+    free_tier: "Open-source"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://docs.bullmq.io/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install bullmq"
+    best_for: ["Redis-based job queues", "self-managed workers"]
+    not_for: ["teams avoiding queue infrastructure operations"]
+    last_verified: "2026-02"
+
+  - name: "Trigger.dev"
+    category: "queue"
+    tags: ["background-jobs", "workflow", "typescript"]
+    pricing_tier: "freemium"
+    free_tier: "Free tier available"
+    ai_friendliness: 4
+    dx_score: 5
+    official_docs: "https://trigger.dev/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install trigger.dev"
+    best_for: ["TypeScript job workflows", "developer-centric orchestration"]
+    not_for: ["teams wanting language-agnostic legacy workflow engines"]
+    last_verified: "2026-02"
+
+  - name: "Temporal"
+    category: "queue"
+    tags: ["workflow-engine", "durable-execution", "enterprise"]
+    pricing_tier: "enterprise"
+    free_tier: "Self-hosted open-source core available"
+    ai_friendliness: 3
+    dx_score: 3
+    official_docs: "https://docs.temporal.io/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @temporalio/client"
+    best_for: ["mission-critical workflow orchestration"]
+    not_for: ["small teams needing lightweight setup"]
+    last_verified: "2026-02"

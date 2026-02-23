@@ -1,10 +1,77 @@
 # search.yaml — 搜索服务场景
-# category: search
-# 推荐填充顺序：Algolia → Typesense → Meilisearch → Elasticsearch → OpenSearch
-# 数据来源参考：https://github.com/agamm/awesome-developer-first
 
-services: []
+services:
+  - name: "Algolia"
+    category: "search"
+    tags: ["hosted-search", "instant-search", "relevance"]
+    pricing_tier: "freemium"
+    free_tier: "Free builder tier available"
+    ai_friendliness: 4
+    dx_score: 5
+    official_docs: "https://www.algolia.com/doc/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install algoliasearch"
+    best_for: ["customer-facing instant search", "high relevance tuning"]
+    not_for: ["self-host-only architecture"]
+    last_verified: "2026-02"
 
-# TODO: 填充以下服务记录（参考 _schema.yaml 格式）：
-# Top Pick:  Algolia (hosted) / Typesense (self-hosted)
-# 替代方案:  Meilisearch, Elasticsearch, OpenSearch
+  - name: "Typesense"
+    category: "search"
+    tags: ["open-source", "self-hosted", "fast"]
+    pricing_tier: "freemium"
+    free_tier: "Open-source self-hosting option"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://github.com/typesense/typesense"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install typesense"
+    best_for: ["self-hosted search", "cost-controlled deployments"]
+    not_for: ["teams avoiding operational overhead"]
+    last_verified: "2026-02"
+
+  - name: "Meilisearch"
+    category: "search"
+    tags: ["open-source", "self-hosted", "developer-friendly"]
+    pricing_tier: "free"
+    free_tier: "Open-source"
+    ai_friendliness: 4
+    dx_score: 4
+    official_docs: "https://www.meilisearch.com/docs"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install meilisearch"
+    best_for: ["developer-friendly self-hosted search"]
+    not_for: ["strict enterprise managed-only requirements"]
+    last_verified: "2026-02"
+
+  - name: "Elasticsearch"
+    category: "search"
+    tags: ["distributed", "enterprise", "analytics"]
+    pricing_tier: "paid"
+    free_tier: "Free tier available in Elastic Cloud"
+    ai_friendliness: 3
+    dx_score: 3
+    official_docs: "https://www.elastic.co/guide/index.html"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @elastic/elasticsearch"
+    best_for: ["large-scale search + analytics"]
+    not_for: ["small teams seeking low-ops simplicity"]
+    last_verified: "2026-02"
+
+  - name: "OpenSearch"
+    category: "search"
+    tags: ["open-source", "distributed", "elasticsearch-compatible"]
+    pricing_tier: "freemium"
+    free_tier: "Open-source self-hosting available"
+    ai_friendliness: 3
+    dx_score: 3
+    official_docs: "https://docs.opensearch.org/latest/"
+    mcp_available: false
+    mcp_url: null
+    quick_install: "npm install @opensearch-project/opensearch"
+    best_for: ["open-source distributed search"]
+    not_for: ["teams requiring managed zero-ops setup by default"]
+    last_verified: "2026-02"

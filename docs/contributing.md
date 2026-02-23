@@ -34,7 +34,11 @@ data/auth.yaml       # 认证服务
 
 ### 3. 按 Schema 格式添加记录
 
-参考 [`docs/schema.md`](schema.md) 了解所有字段含义。每条记录必须包含全部 12 个字段：
+参考 [`docs/schema.md`](schema.md) 了解所有字段含义。每条记录必须包含全部 14 个字段：
+
+- 通用模板：[`docs/templates/service-record-template.yaml`](templates/service-record-template.yaml)
+- 示例记录：[`docs/templates/service-record-example.yaml`](templates/service-record-example.yaml)
+- 批量填充建议：[`docs/data-template.md`](data-template.md)
 
 ```yaml
 services:
@@ -51,7 +55,7 @@ services:
     quick_install: "npm install yourservice"
     best_for: ["indie hackers", "small teams"]
     not_for: ["high volume production"]
-    last_verified: "2025-02"    # 填写你验证的当月
+    last_verified: "2026-02"    # 填写你验证的当月
 ```
 
 ### 4. 人工核实必填项（重要）
