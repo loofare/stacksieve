@@ -1,3 +1,6 @@
+# Private / internal documents (not for public repo)
+private/
+
 # Dependencies
 node_modules/
 .pnp
