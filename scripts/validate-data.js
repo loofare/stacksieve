@@ -42,6 +42,8 @@ const ServiceYamlFileSchema = z.object({
 });
 
 const DATA_DIR = path.join(process.cwd(), 'data');
+const MIN_SERVICES_PER_CATEGORY = 3;
+const MIN_TOTAL_SERVICES = 36;
 
 function formatZodIssues(issues) {
   return issues.map((issue) => `${issue.path.join('.') || '<root>'}: ${issue.message}`).join('; ');
@@ -65,7 +67,15 @@ function main() {
 
   const errors = [];
   const serviceNameIndex = new Map();
+  const categoryCount = new Map();
   let total = 0;
+
+  const missingCategoryFiles = CATEGORY_VALUES.filter(
+    (category) => !files.includes(`${category}.yaml`)
+  );
+  if (missingCategoryFiles.length > 0) {
+    errors.push(`缺少分类文件: ${missingCategoryFiles.join(', ')}`);
+  }
 
   for (const fileName of files) {
     const filePath = path.join(DATA_DIR, fileName);
@@ -79,6 +89,14 @@ function main() {
       if (!result.success) {
         errors.push(`[${fileName}] schema 校验失败: ${formatZodIssues(result.error.issues)}`);
         continue;
+      }
+
+      const recordCount = result.data.services.length;
+      categoryCount.set(expectedCategory, recordCount);
+      if (recordCount < MIN_SERVICES_PER_CATEGORY) {
+        errors.push(
+          `[${fileName}] 服务条目不足：当前 ${recordCount}，至少需要 ${MIN_SERVICES_PER_CATEGORY}`
+        );
       }
 
       for (const record of result.data.services) {
@@ -104,6 +122,10 @@ function main() {
     }
   }
 
+  if (total < MIN_TOTAL_SERVICES) {
+    errors.push(`服务总数不足：当前 ${total}，至少需要 ${MIN_TOTAL_SERVICES}`);
+  }
+
   if (errors.length > 0) {
     console.error('❌ 数据校验失败：');
     for (const item of errors) {
@@ -112,7 +134,11 @@ function main() {
     process.exit(1);
   }
 
+  const categorySummary = CATEGORY_VALUES.map(
+    (category) => `${category}=${categoryCount.get(category) ?? 0}`
+  ).join(', ');
   console.log(`✅ 数据校验通过：${files.length} 个文件，${total} 条服务记录`);
+  console.log(`📊 分类计数：${categorySummary}`);
 }
 
 main();
