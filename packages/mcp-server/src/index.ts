@@ -21,7 +21,7 @@ function resolveServerVersion(): string {
     } catch {
         // ignore and fallback to static version
     }
-    return '0.1.2';
+    return '0.1.3';
 }
 
 const server = new McpServer({
