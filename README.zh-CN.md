@@ -1,4 +1,4 @@
-# StackSieve MCP
+# StackSieve（MCP + CLI）
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
@@ -13,7 +13,25 @@
 
 ---
 
-## 快速开始（npm 优先）
+## 30 秒上手（CLI 优先）
+
+最快验证 StackSieve 的方式是先跑 CLI：
+
+```bash
+npx -y @stacksievehq/cli@latest "我需要邮件+支付+认证能力做一个 SaaS" --format json
+npx -y @stacksievehq/cli@latest categories --format json
+npx -y @stacksievehq/cli@latest detail Resend --format json
+```
+
+CLI 命令面：
+- `service-advisor "<description>" [--format table|json]`
+- `service-advisor --category <category> [--format table|json]`
+- `service-advisor detail <name> [--format table|json]`
+- `service-advisor categories [--format table|json]`
+
+---
+
+## MCP 快速开始（npm 优先）
 
 截至 **2026-02-23**，已发布版本：
 
@@ -106,7 +124,7 @@ StackSieve：
 
 ---
 
-## CLI 用法
+## CLI 用法（详细）
 
 ```bash
 # npm 方式（推荐）

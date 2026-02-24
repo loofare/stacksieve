@@ -1,4 +1,4 @@
-# StackSieve MCP
+# StackSieve (MCP + CLI)
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
@@ -13,7 +13,25 @@ Branding and compatibility:
 
 ---
 
-## Quick Start (npm-first)
+## Start in 30 Seconds (CLI-first)
+
+The fastest way to validate StackSieve is CLI:
+
+```bash
+npx -y @stacksievehq/cli@latest "I need email + payment + auth for a SaaS" --format json
+npx -y @stacksievehq/cli@latest categories --format json
+npx -y @stacksievehq/cli@latest detail Resend --format json
+```
+
+CLI commands:
+- `service-advisor "<description>" [--format table|json]`
+- `service-advisor --category <category> [--format table|json]`
+- `service-advisor detail <name> [--format table|json]`
+- `service-advisor categories [--format table|json]`
+
+---
+
+## MCP Quick Start (npm-first)
 
 As of **February 23, 2026**, published versions are:
 
@@ -106,7 +124,7 @@ StackSieve:
 
 ---
 
-## CLI Usage
+## CLI Usage (Detailed)
 
 ```bash
 # npm usage (recommended)
