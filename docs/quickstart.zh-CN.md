@@ -20,7 +20,13 @@ pnpm -v   # >= 8（仅本仓开发模式需要）
 截至 **2026-02-23**，已发布版本：
 
 - `@stacksievehq/mcp-server@0.1.2`
-- `@stacksievehq/cli@0.1.1`
+- `@stacksievehq/cli@0.1.2`
+
+如果你使用镜像源且 `npx` 解析到旧依赖，可显式指定 npm 官方源：
+
+```bash
+npx --registry=https://registry.npmjs.org -y @stacksievehq/cli@latest categories --format json
+```
 
 ## 2. 推荐接入路径（npm 发布版）
 
@@ -201,8 +207,10 @@ npx -y @stacksievehq/cli@latest categories --format json
 ### Q2. `npx -y @stacksievehq/mcp-server` 执行失败
 
 1. 先执行 `npm view @stacksievehq/mcp-server version --registry=https://registry.npmjs.org`。
-2. 若公司网络限制 `npx`，切换到第 8 节本仓开发模式。
-3. 确认 Node 版本满足 `>=20`。
+2. 若默认 registry 是镜像源，重试时加 `--registry=https://registry.npmjs.org`。
+3. 必要时清理旧 npx 缓存：`rm -rf ~/.npm/_npx`。
+4. 若公司网络限制 `npx`，切换到第 8 节本仓开发模式。
+5. 确认 Node 版本满足 `>=20`。
 
 ### Q3. 只能用 TOML，不能导入 JSON
 

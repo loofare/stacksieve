@@ -1,6 +1,6 @@
 {
     "name": "@stacksievehq/cli",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "StackSieve CLI — query third-party service recommendations from your terminal",
     "private": false,
     "publishConfig": {
@@ -18,7 +18,7 @@
         "lint": "tsc -p tsconfig.lint.json"
     },
     "dependencies": {
-        "@stacksievehq/mcp-server": "^0.1.0",
+        "@stacksievehq/mcp-server": "^0.1.1",
         "chalk": "^5.3.0",
         "cli-table3": "^0.6.3",
         "commander": "^12.0.0"

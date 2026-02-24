@@ -20,7 +20,13 @@ pnpm -v   # >= 8 (only needed for local repo mode)
 As of **2026-02-23**, published versions are:
 
 - `@stacksievehq/mcp-server@0.1.2`
-- `@stacksievehq/cli@0.1.1`
+- `@stacksievehq/cli@0.1.2`
+
+If your environment uses a mirror registry and `npx` resolves stale dependencies, run with npmjs registry explicitly:
+
+```bash
+npx --registry=https://registry.npmjs.org -y @stacksievehq/cli@latest categories --format json
+```
 
 ## 2. Recommended Path (npm published mode)
 
@@ -201,8 +207,10 @@ I am building an AI app and need vector search, queueing, and object storage.
 ### Q2. `npx -y @stacksievehq/mcp-server` fails
 
 1. Run `npm view @stacksievehq/mcp-server version --registry=https://registry.npmjs.org`.
-2. If `npx` is blocked by corporate network policy, use Section 8 local repo mode.
-3. Ensure Node version is `>=20`.
+2. If your default registry is a mirror, retry with `--registry=https://registry.npmjs.org`.
+3. If needed, clean stale npx cache: `rm -rf ~/.npm/_npx`.
+4. If `npx` is blocked by corporate network policy, use Section 8 local repo mode.
+5. Ensure Node version is `>=20`.
 
 ### Q3. I can only use TOML, not JSON
 

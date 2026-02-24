@@ -36,7 +36,13 @@ CLI commands:
 As of **February 23, 2026**, published versions are:
 
 - `@stacksievehq/mcp-server@0.1.2`
-- `@stacksievehq/cli@0.1.1`
+- `@stacksievehq/cli@0.1.2`
+
+If your network uses a mirror registry and you still get old transitive packages, force npmjs registry:
+
+```bash
+npx --registry=https://registry.npmjs.org -y @stacksievehq/cli@latest "email + payment + auth" --format json
+```
 
 ```bash
 # Register to Claude Code (project scope)

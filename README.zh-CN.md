@@ -36,7 +36,13 @@ CLI 命令面：
 截至 **2026-02-23**，已发布版本：
 
 - `@stacksievehq/mcp-server@0.1.2`
-- `@stacksievehq/cli@0.1.1`
+- `@stacksievehq/cli@0.1.2`
+
+如果你使用镜像源（如 `npmmirror`）并且拿到旧的依赖树，可强制走 npm 官方源：
+
+```bash
+npx --registry=https://registry.npmjs.org -y @stacksievehq/cli@latest "email + payment + auth" --format json
+```
 
 ```bash
 # 注册到 Claude Code（项目级）
