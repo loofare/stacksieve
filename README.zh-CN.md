@@ -29,13 +29,39 @@ CLI 命令面：
 - `service-advisor detail <name> [--format table|json]`
 - `service-advisor categories [--format table|json]`
 
+### 可直接复制的 CLI 场景示例
+
+```bash
+# SaaS 核心三件套
+npx -y @stacksievehq/cli@latest "email + payment + auth" --format json
+
+# 图片/文件存储
+npx -y @stacksievehq/cli@latest "我需要图片存储服务用于用户上传" --format json
+
+# AI 应用技术栈
+npx -y @stacksievehq/cli@latest "LLM API + 向量检索 + 队列" --format json
+
+# 仅查询某个分类
+npx -y @stacksievehq/cli@latest --category file-storage --format table
+```
+
+### 输入示例（输入 -> 期望分类）
+
+| 输入 | 期望分类 |
+|------|---------|
+| `email + payment + auth` | `email`、`payment`、`auth` |
+| `我需要图片存储服务` | `file-storage` |
+| `我需要对象存储和图片加速` | `file-storage`、`cdn` |
+| `我需要低成本日志和分析` | `logging`、`analytics` |
+| `我需要队列和定时后台任务` | `queue` |
+
 ---
 
 ## MCP 快速开始（npm 优先）
 
-截至 **2026-02-23**，已发布版本：
+截至 **2026-02-24**，已发布版本：
 
-- `@stacksievehq/mcp-server@0.1.2`
+- `@stacksievehq/mcp-server@0.1.3`
 - `@stacksievehq/cli@0.1.2`
 
 如果你使用镜像源（如 `npmmirror`）并且拿到旧的依赖树，可强制走 npm 官方源：

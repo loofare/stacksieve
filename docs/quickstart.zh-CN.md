@@ -17,9 +17,9 @@ npm -v    # >= 10
 pnpm -v   # >= 8（仅本仓开发模式需要）
 ```
 
-截至 **2026-02-23**，已发布版本：
+截至 **2026-02-24**，已发布版本：
 
-- `@stacksievehq/mcp-server@0.1.2`
+- `@stacksievehq/mcp-server@0.1.3`
 - `@stacksievehq/cli@0.1.2`
 
 如果你使用镜像源且 `npx` 解析到旧依赖，可显式指定 npm 官方源：
@@ -42,6 +42,28 @@ claude mcp list
 
 ```bash
 npx -y @stacksievehq/cli@latest categories --format json
+```
+
+## 2.1 首次 5 分钟检查清单
+
+按顺序执行：
+
+```bash
+# 1) 检查 npm 包可见性
+npm view @stacksievehq/mcp-server version --registry=https://registry.npmjs.org
+npm view @stacksievehq/cli version --registry=https://registry.npmjs.org
+
+# 2) 检查 CLI 是否可用
+npx -y @stacksievehq/cli@latest "email + payment + auth" --format json
+
+# 3) 检查 MCP 是否注册
+claude mcp list
+```
+
+若第 2 步因镜像源失败，可重试：
+
+```bash
+npx --registry=https://registry.npmjs.org -y @stacksievehq/cli@latest "我需要图片存储服务" --format json
 ```
 
 ## 3. 模式说明
@@ -195,6 +217,15 @@ npx -y @stacksievehq/cli@latest categories --format json
 ```text
 我在做 AI 产品，需要向量检索、队列和对象存储。
 ```
+
+5. 输入到分类的快速核对：
+
+| 输入 | 期望分类 |
+|------|---------|
+| `我需要图片存储服务` | `file-storage` |
+| `我需要对象存储和图片加速` | `file-storage`、`cdn` |
+| `我需要低成本日志和分析` | `logging`、`analytics` |
+| `我需要队列和定时后台任务` | `queue` |
 
 ## 10. 常见问题
 

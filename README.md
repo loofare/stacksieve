@@ -29,13 +29,39 @@ CLI commands:
 - `service-advisor detail <name> [--format table|json]`
 - `service-advisor categories [--format table|json]`
 
+### Copy-Paste CLI Recipes
+
+```bash
+# SaaS core stack
+npx -y @stacksievehq/cli@latest "email + payment + auth" --format json
+
+# Image/file storage
+npx -y @stacksievehq/cli@latest "I need image storage for user uploads" --format json
+
+# AI app stack
+npx -y @stacksievehq/cli@latest "LLM API + vector search + queue" --format json
+
+# One category only
+npx -y @stacksievehq/cli@latest --category file-storage --format table
+```
+
+### Prompt Examples (Input -> Expected Categories)
+
+| Input | Expected Categories |
+|------|---------------------|
+| `I need email + payment + auth` | `email`, `payment`, `auth` |
+| `I need image storage for uploads` | `file-storage` |
+| `I need object storage and image acceleration` | `file-storage`, `cdn` |
+| `I need low-cost logging and analytics` | `logging`, `analytics` |
+| `I need queue + cron background jobs` | `queue` |
+
 ---
 
 ## MCP Quick Start (npm-first)
 
-As of **February 23, 2026**, published versions are:
+As of **February 24, 2026**, published versions are:
 
-- `@stacksievehq/mcp-server@0.1.2`
+- `@stacksievehq/mcp-server@0.1.3`
 - `@stacksievehq/cli@0.1.2`
 
 If your network uses a mirror registry and you still get old transitive packages, force npmjs registry:
