@@ -5,7 +5,9 @@ const path = require('node:path');
 const yaml = require('js-yaml');
 
 const DATA_DIR = path.join(process.cwd(), 'data');
-const TIMEOUT_MS = 15000;
+const TIMEOUT_MS = Number.parseInt(process.env.LINK_CHECK_TIMEOUT_MS || '15000', 10);
+const CONCURRENCY = Number.parseInt(process.env.LINK_CHECK_CONCURRENCY || '8', 10);
+const RETRIES = Number.parseInt(process.env.LINK_CHECK_RETRIES || '1', 10);
 
 function loadUrls() {
   const files = fs
@@ -42,47 +44,68 @@ function loadUrls() {
 }
 
 async function probeUrl(url, method) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  let lastError = '';
+  const maxAttempts = Math.max(1, RETRIES + 1);
 
-  try {
-    const response = await fetch(url, {
-      method,
-      redirect: 'follow',
-      signal: controller.signal,
-      headers: method === 'GET' ? { Range: 'bytes=0-0' } : undefined,
-    });
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
 
-    return {
-      ok: response.status >= 200 && response.status < 400,
-      status: response.status,
-    };
-  } finally {
-    clearTimeout(timer);
+    try {
+      const response = await fetch(url, {
+        method,
+        redirect: 'follow',
+        signal: controller.signal,
+        headers: {
+          'User-Agent': 'stacksieve-link-check/0.1',
+          Accept: 'text/html,application/json;q=0.9,*/*;q=0.8',
+        },
+      });
+
+      return {
+        ok: response.status >= 200 && response.status < 400,
+        status: response.status,
+      };
+    } catch (error) {
+      lastError = error instanceof Error ? error.message : String(error);
+      if (attempt === maxAttempts) {
+        return {
+          ok: false,
+          status: 'ERR',
+          error: lastError,
+        };
+      }
+    } finally {
+      clearTimeout(timer);
+    }
   }
+
+  return {
+    ok: false,
+    status: 'ERR',
+    error: lastError || 'unknown error',
+  };
 }
 
 async function checkOne(url) {
-  try {
-    const head = await probeUrl(url, 'HEAD');
+  const head = await probeUrl(url, 'HEAD');
 
-    if (head.ok) {
-      return { ok: true, status: head.status };
-    }
-
-    if (head.status === 405 || head.status === 403) {
-      const get = await probeUrl(url, 'GET');
-      return { ok: get.ok, status: get.status };
-    }
-
-    return { ok: false, status: head.status };
-  } catch (error) {
-    return {
-      ok: false,
-      status: 'ERR',
-      error: error instanceof Error ? error.message : String(error),
-    };
+  if (head.ok) {
+    return { ok: true, status: head.status };
   }
+
+  if (
+    head.status === 'ERR' ||
+    head.status === 405 ||
+    head.status === 403 ||
+    head.status === 429 ||
+    (typeof head.status === 'number' && head.status >= 500)
+  ) {
+    const get = await probeUrl(url, 'GET');
+    return { ok: get.ok, status: get.status, error: get.error || head.error };
+  }
+
+  return { ok: false, status: head.status, error: head.error };
 }
 
 async function main() {
@@ -104,22 +127,45 @@ async function main() {
 
   const failures = [];
   let successCount = 0;
+  const checks = Array.from(unique.entries());
+  const total = checks.length;
+  let nextIndex = 0;
+  let completed = 0;
+  const workerCount = Math.max(1, Math.min(CONCURRENCY, total || 1));
 
-  for (const [url, sources] of unique.entries()) {
-    const result = await checkOne(url);
+  console.log(`🔎 开始检查链接：${total} 个唯一 URL，并发=${workerCount}，超时=${TIMEOUT_MS}ms`);
 
-    if (result.ok) {
-      successCount += 1;
-      continue;
+  async function worker() {
+    while (true) {
+      const currentIndex = nextIndex;
+      nextIndex += 1;
+      if (currentIndex >= total) {
+        return;
+      }
+
+      const [url, sources] = checks[currentIndex];
+      const result = await checkOne(url);
+
+      if (result.ok) {
+        successCount += 1;
+      } else {
+        failures.push({
+          url,
+          sources,
+          status: result.status,
+          error: result.error || '',
+        });
+      }
+
+      completed += 1;
+      if (completed % 10 === 0 || completed === total) {
+        console.log(`...进度 ${completed}/${total}（成功 ${successCount}，失败 ${failures.length}）`);
+      }
     }
-
-    failures.push({
-      url,
-      sources,
-      status: result.status,
-      error: result.error || '',
-    });
   }
+
+  const workers = Array.from({ length: workerCount }, () => worker());
+  await Promise.all(workers);
 
   if (failures.length > 0) {
     console.error('❌ 链接检查失败：');

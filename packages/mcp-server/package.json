@@ -1,7 +1,7 @@
 {
     "name": "@stacksievehq/mcp-server",
-    "version": "0.1.1",
-    "description": "ServiceAdvisor MCP Server — AI-powered third-party service recommendations",
+    "version": "0.1.2",
+    "description": "StackSieve MCP Server — AI-powered third-party service recommendations",
     "private": false,
     "publishConfig": {
         "access": "public"

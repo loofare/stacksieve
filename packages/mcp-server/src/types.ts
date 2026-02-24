@@ -1,4 +1,4 @@
-// types.ts — ServiceAdvisor MCP TypeScript 类型定义
+// types.ts — StackSieve MCP TypeScript 类型定义
 // 对应 data/_schema.yaml 中的 14 字段数据契约
 
 export type PricingTier = 'free' | 'freemium' | 'paid' | 'enterprise';

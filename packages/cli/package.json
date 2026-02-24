@@ -1,7 +1,7 @@
 {
     "name": "@stacksievehq/cli",
     "version": "0.1.1",
-    "description": "ServiceAdvisor CLI — query third-party service recommendations from your terminal",
+    "description": "StackSieve CLI — query third-party service recommendations from your terminal",
     "private": false,
     "publishConfig": {
         "access": "public"

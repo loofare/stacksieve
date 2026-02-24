@@ -3,12 +3,30 @@
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { readFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import { z } from 'zod';
 import { recommend, getDetail, listCategories } from './recommender.js';
 
+function resolveServerVersion(): string {
+    try {
+        const currentDir = dirname(fileURLToPath(import.meta.url));
+        const packageJsonPath = join(currentDir, '..', 'package.json');
+        const raw = readFileSync(packageJsonPath, 'utf8');
+        const parsed = JSON.parse(raw) as { version?: string };
+        if (typeof parsed.version === 'string' && parsed.version.trim().length > 0) {
+            return parsed.version;
+        }
+    } catch {
+        // ignore and fallback to static version
+    }
+    return '0.1.2';
+}
+
 const server = new McpServer({
     name: 'service-advisor',
-    version: '0.1.1',
+    version: resolveServerVersion(),
 });
 
 // ============================================================

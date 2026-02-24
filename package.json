@@ -1,7 +1,7 @@
 {
     "name": "stacksieve",
     "version": "0.1.0",
-    "description": "ServiceAdvisor MCP — AI-First third-party service recommendation engine",
+    "description": "StackSieve MCP — AI-first third-party service recommendation engine",
     "private": true,
     "engines": {
         "node": ">=20.0.0",

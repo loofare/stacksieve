@@ -1,4 +1,4 @@
-# _schema.yaml — ServiceAdvisor MCP 数据格式规范
+# _schema.yaml — StackSieve MCP 数据格式规范
 # 每条服务记录必须包含以下 14 个字段
 # 这是整个产品的数据契约，所有 YAML 文件中的记录必须符合此规范
 

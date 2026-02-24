@@ -1,4 +1,4 @@
-# ServiceAdvisor 示例（email + payment）
+# StackSieve 示例（email + payment）
 
 services:
   - name: "Resend"

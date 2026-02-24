@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// index.ts — ServiceAdvisor CLI 入口
+// index.ts — StackSieve CLI 入口
 
 import { Command } from 'commander';
 import chalk from 'chalk';
@@ -37,7 +37,7 @@ function printRecommendationTable(result: RecommendationResult): void {
         ]);
     }
 
-    console.log(chalk.bold('\nServiceAdvisor Recommendations\n'));
+    console.log(chalk.bold('\nStackSieve Recommendations\n'));
     console.log(table.toString());
 }
 
